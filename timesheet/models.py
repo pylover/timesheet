@@ -3,9 +3,10 @@ __author__ = 'vahid'
 
 
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import scoped_session, sessionmaker
-from sqlalchemy import create_engine, Column, DateTime, String, Integer
+from sqlalchemy.orm import scoped_session, sessionmaker, relationship, backref
+from sqlalchemy import create_engine, Column, DateTime, String, Integer, ForeignKey
 from datetime import datetime
+from timesheet import config
 
 maker = sessionmaker()
 DBSession = scoped_session(maker)
@@ -21,18 +22,45 @@ class Subject(BaseModel):
     title = Column(String(50), nullable=False, index=True, unique=True)
     entry_time = Column(DateTime, nullable=False, default=datetime.now)
 
+    @classmethod
+    def ensure(cls, title):
+        s = cls.query.filter(cls.title == title).first()
+        if not s:
+            s = cls(title=title)
+            DBSession.add(s)
+        return s
 
-class Timesheet(BaseModel):
-    __tablename__ = 'timesheet'
+
+class Task(BaseModel):
+    __tablename__ = 'task'
 
     id = Column(Integer, primary_key=True)
     title = Column(String(100), nullable=True)
     start_time = Column(DateTime, nullable=False, default=datetime.now)
     end_time = Column(DateTime, nullable=True)
+    subject_id = Column(Integer, ForeignKey('subject.id'))
+
+    subject = relationship("Subject", backref=backref('tasks', order_by=start_time))
+
+    @classmethod
+    def get_active_task(cls):
+        task = cls.query.filter(cls.end_time == None).order_by(cls.start_time.desc()).first()
+        return task
+
+    def end(self):
+        self.end_time = datetime.now()
+
+    def __repr__(self):
+        return '<Subject=%s title=%s start=%s end=%s>' % (
+            self.subject.title,
+            self.title,
+            self.start_time.strftime(config.datetime_format),
+            'Not Yet' if not self.end_time else self.end_time.strftime(config.datetime_format)
+        )
 
 
 def init():
-    from timesheet import config
+
     engine = create_engine(config.db.uri, echo=config.db.echo)
     DBSession.configure(bind=engine)
     BaseModel.metadata.create_all(engine)

@@ -11,7 +11,11 @@ __builtin_config__ = """
 db:
   uri: sqlite:///%(data_file)s
   echo: false
-""" % dict(data_file=user_data_file)
+
+datetime_format: %(time_format)s
+
+""" % dict(data_file=user_data_file,
+           time_format='"%m/%d %H:%M"')
 
 
 def create_config_manager():

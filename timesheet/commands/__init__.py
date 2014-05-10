@@ -40,7 +40,9 @@ class Command(object):
         raise ValueError('Invalid command name: %s' % command_name)
 
 
-from .start import StartCommand
 from .help import HelpCommand
+from .start import StartCommand
+from .end import EndCommand
+from .active import ActiveCommand
 
 __all__ = ['Command', 'StartCommand', 'HelpCommand']
