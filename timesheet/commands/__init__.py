@@ -51,5 +51,6 @@ from .end import EndCommand
 from .active import ActiveCommand
 from .report import ReportCommand
 from .subjects import SubjectsCommand
+from .import_ import ImportCommand
 
 __all__ = ['Command']
