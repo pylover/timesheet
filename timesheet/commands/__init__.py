@@ -4,6 +4,11 @@ import argparse
 
 
 class Command(object):
+    """
+    Abstract command class
+    """
+    name = ''
+    description = ''
 
     def __init__(self, args=None):
         self.parser = self._create_parser()
@@ -44,5 +49,7 @@ from .help import HelpCommand
 from .start import StartCommand
 from .end import EndCommand
 from .active import ActiveCommand
+from .report import ReportCommand
+from .subjects import SubjectsCommand
 
-__all__ = ['Command', 'StartCommand', 'HelpCommand']
+__all__ = ['Command']

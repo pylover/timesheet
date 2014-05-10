@@ -30,6 +30,12 @@ class Subject(BaseModel):
             DBSession.add(s)
         return s
 
+    def __repr__(self):
+        return '<%s created=%s >' % (
+            self.title,
+            self.entry_time.strftime(config.datetime_format)
+        )
+
 
 class Task(BaseModel):
     __tablename__ = 'task'
