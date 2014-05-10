@@ -1,8 +1,9 @@
 __author__ = 'vahid'
 
 from timesheet.commands import Command
-from timesheet.models import Subject, Task, DBSession
+from timesheet.models import Subject
 from timesheet import config
+
 
 class ReportCommand(Command):
     name = 'report'
@@ -43,5 +44,3 @@ class ReportCommand(Command):
         else:
             for subject in Subject.query.order_by(Subject.entry_time):
                 self.report_subject(subject)
-
-

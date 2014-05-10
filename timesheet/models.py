@@ -73,8 +73,6 @@ class Task(BaseModel):
 
 
 def init():
-
     engine = create_engine(config.db.uri, echo=config.db.echo)
     DBSession.configure(bind=engine)
     BaseModel.metadata.create_all(engine)
-

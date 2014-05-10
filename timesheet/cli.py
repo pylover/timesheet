@@ -16,5 +16,6 @@ parser.add_argument('-c', '--config-file',
                     dest='config_files',
                     action='append',
                     default=[user_config_file],
-                    help='YAML configuration file, this option can be used multiple times, default: %s' % user_config_file)
+                    help='YAML configuration file, this option can be used multiple times \
+                    , default: %s' % user_config_file)
 
