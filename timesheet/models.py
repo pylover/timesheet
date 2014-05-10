@@ -56,6 +56,13 @@ class Task(BaseModel):
     def end(self):
         self.end_time = datetime.now()
 
+    @property
+    def hours(self):
+        if not self.end_time:
+            return 0
+        else:
+            return (self.end_time - self.start_time).total_seconds() / 3600.0
+
     def __repr__(self):
         return '<Subject=%s title=%s start=%s end=%s>' % (
             self.subject.title,

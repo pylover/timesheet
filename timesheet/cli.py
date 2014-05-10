@@ -4,7 +4,7 @@ import argparse
 from timesheet.configuration import user_config_file
 from timesheet.commands import *
 
-commands = ''.join(['\n %s%s%s' % (c.name, (20-len(c.name)) * ' ', c.description) for c in Command.get_available_commands()])
+commands = ''.join(['\n %-20s%s' % (c.name, c.description) for c in Command.get_available_commands()])
 
 parser = argparse.ArgumentParser(description='Simple timesheet system, using python',
                                  epilog="Available commands:%s" % commands,
