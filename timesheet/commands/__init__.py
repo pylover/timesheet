@@ -53,5 +53,6 @@ from .report import ReportCommand
 from .subjects import SubjectsCommand
 from .import_ import ImportCommand
 from .export import ExportCommand
+from .edit_last import EditLastCommand
 
 __all__ = ['Command']

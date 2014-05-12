@@ -1,6 +1,8 @@
 __author__ = 'vahid'
 
 import argparse
+import argcomplete
+from argcomplete.completers import EnvironCompleter
 from timesheet.configuration import user_config_file
 from timesheet.commands import Command
 
@@ -18,6 +20,8 @@ parser.add_argument('-c', '--config-file',
                     default=[user_config_file],
                     help='YAML configuration file, this option can be used multiple times \
                     , default: %s' % user_config_file)
+
+argcomplete.autocomplete(parser)
 
 REMINDER = []
 

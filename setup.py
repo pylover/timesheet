@@ -14,7 +14,8 @@ with open(os.path.join(os.path.dirname(__file__), 'timesheet', '__init__.py')) a
 dependencies = [
     'sqlalchemy',
     'pymlconf>=0.3.10',
-    'appdirs>=1.3.0'
+    'appdirs>=1.3.0',
+    'argcomplete'
 ]
 
 
