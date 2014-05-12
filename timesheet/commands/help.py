@@ -13,4 +13,4 @@ class HelpCommand(Command):
 
     def do_job(self):
         command_class = Command.get_command(self.args.command)
-        command_class().help()
+        command_class(args=[]).help()
