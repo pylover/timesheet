@@ -2,7 +2,7 @@ __author__ = 'vahid'
 
 import argparse
 from timesheet.configuration import user_config_file
-from timesheet.commands import *
+from timesheet.commands import Command
 
 commands = ''.join(['\n %-20s%s' % (c.name, c.description) for c in Command.get_available_commands()])
 
@@ -19,3 +19,16 @@ parser.add_argument('-c', '--config-file',
                     help='YAML configuration file, this option can be used multiple times \
                     , default: %s' % user_config_file)
 
+REMINDER = []
+
+
+def parse_ars():
+    global REMINDER
+    args, REMINDER = parser.parse_known_args()
+    return args
+
+
+def dispatch_command(command):
+    command_class = Command.get_command(command)
+    cmd = command_class(REMINDER)
+    cmd.do_job()

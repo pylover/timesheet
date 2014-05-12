@@ -12,7 +12,7 @@ def entrypoint():
 
     # Preparing cli arguments
     from timesheet import cli
-    args, remainder = cli.parser.parse_known_args()
+    args = cli.parse_ars()
 
     # Preparing config
     config.load_files(args.config_files)
@@ -22,10 +22,6 @@ def entrypoint():
     models.init()
 
     # Switch on commands
-    from timesheet.commands import Command
-    command_class = Command.get_command(args.command)
-    cmd = command_class(remainder)
-    cmd.do_job()
-
+    cli.dispatch_command(args.command)
 
     sys.exit(0)
