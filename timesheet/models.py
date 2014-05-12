@@ -67,9 +67,17 @@ class Task(BaseModel):
         return '<Subject=%s title=%s start=%s end=%s>' % (
             self.subject.title,
             self.title,
-            self.start_time.strftime(config.datetime_format),
-            'Not Yet' if not self.end_time else self.end_time.strftime(config.datetime_format)
+            self.start_time_string,
+            self.end_time_string
         )
+
+    @property
+    def start_time_string(self):
+        return self.start_time.strftime(config.datetime_format)
+
+    @property
+    def end_time_string(self):
+        return '' if not self.end_time else self.end_time.strftime(config.datetime_format)
 
 
 def init():

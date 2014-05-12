@@ -2,7 +2,6 @@ __author__ = 'vahid'
 
 from timesheet.commands import Command
 from timesheet.models import Subject
-from timesheet import config
 
 
 class ReportCommand(Command):
@@ -26,8 +25,8 @@ class ReportCommand(Command):
             print '|%-20s|%8.2f|%-16s|%-16s|' % (
                 '' if not task.title else task.title[:20],
                 task.hours,
-                task.start_time.strftime(config.datetime_format),
-                '' if not task.end_time else task.end_time.strftime(config.datetime_format)
+                task.start_time_string,
+                task.end_time_string
             )
 
         print '+%-20s+%8s+%16s+%16s+' % ('-' * 20, '-' * 8, '-' * 16, '-' * 16)
