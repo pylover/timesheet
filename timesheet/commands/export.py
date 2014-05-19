@@ -4,6 +4,7 @@ import sys
 import csv
 from timesheet.commands import Command
 from timesheet.models import Task, Subject
+from timesheet.commands.completers import subject_completer
 
 
 class ExportCommand(Command):
@@ -14,7 +15,11 @@ class ExportCommand(Command):
     def add_arguments(cls):
         cls.parser.add_argument('output', nargs='?', help="Output filename. if omitted, \
         the standard output will be used")
-        cls.parser.add_argument('-s', '--subject', action='append', default=[], help="Subject to filter the result, ")
+        cls.parser.add_argument('-s', '--subject',
+                                action='append',
+                                default=[],
+                                help="Subject to filter the result ")\
+            .completer = subject_completer
 
     def do_job(self):
 

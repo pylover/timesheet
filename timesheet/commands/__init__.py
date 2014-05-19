@@ -42,6 +42,10 @@ def get_available_commands():
     return __get_available_commands(Command)
 
 
+def get_available_command_names():
+    return [c.name for c in get_available_commands()]
+
+
 def get_command(command_name):
     for c in get_available_commands():
         if c.name == command_name:

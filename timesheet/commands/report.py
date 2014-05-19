@@ -2,6 +2,7 @@ __author__ = 'vahid'
 
 from timesheet.commands import Command
 from timesheet.models import Subject
+from timesheet.commands.completers import subject_completer
 
 
 class ReportCommand(Command):
@@ -10,7 +11,8 @@ class ReportCommand(Command):
 
     @classmethod
     def add_arguments(cls):
-        cls.parser.add_argument('subject', nargs='?', help="Subject to do something about that.")
+        cls.parser.add_argument('subject', nargs='?', help="Subject to do something about that.")\
+            .completer = subject_completer
 
     @staticmethod
     def report_subject(subject):

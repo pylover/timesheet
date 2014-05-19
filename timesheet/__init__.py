@@ -18,7 +18,7 @@ def entrypoint():
     from timesheet import cli
     args = cli.parse_ars()
 
-    # Switch on commands
-    cli.dispatch_command(args)
+    # Dispatch and execute the command
+    args.command_class(args).do_job()
 
     sys.exit(0)
