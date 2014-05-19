@@ -1,5 +1,5 @@
 __author__ = 'vahid'
-__version__ = '0.1dev'
+__version__ = '0.1'
 
 import sys
 from timesheet.configuration import create_config_manager

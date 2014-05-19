@@ -47,7 +47,6 @@ setup(
         "Development Status :: 2 - Pre-Alpha",
         "License :: Freeware",
         'Intended Audience :: Developers',
-        'Intended Audience :: Information Technolog',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
