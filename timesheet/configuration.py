@@ -24,4 +24,4 @@ def create_config_manager():
     if not path.exists(data_dir):
         mkdir(data_dir)
 
-    return ConfigManager(__builtin_config__)
+    return ConfigManager(__builtin_config__, files=user_config_file)

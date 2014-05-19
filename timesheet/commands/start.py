@@ -1,7 +1,9 @@
+
 __author__ = 'vahid'
 
 from timesheet.commands import Command
 from timesheet.models import Subject, Task, DBSession
+from timesheet.commands.completers import subject_completer
 
 
 class StartCommand(Command):
@@ -10,7 +12,7 @@ class StartCommand(Command):
 
     @classmethod
     def add_arguments(cls):
-        cls.parser.add_argument('subject', help="Subject to do something about that.")
+        cls.parser.add_argument('subject', help="Subject to do something about that.").completer = subject_completer
         cls.parser.add_argument('task', nargs='?', help="The task name")
 
     def do_job(self):

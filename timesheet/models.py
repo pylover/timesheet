@@ -30,6 +30,10 @@ class Subject(BaseModel):
             DBSession.add(s)
         return s
 
+    @classmethod
+    def all_titles(cls):
+        return [s.title for s in cls.query.order_by(cls.title)]
+
     def __repr__(self):
         return '<%s created=%s >' % (
             self.title,

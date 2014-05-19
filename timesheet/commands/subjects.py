@@ -9,7 +9,4 @@ class SubjectsCommand(Command):
     description = 'Print all subjects'
 
     def do_job(self):
-        for s in Subject.query.order_by(Subject.title):
-            print s.title
-
-
+        print '\n'.join(Subject.all_titles())

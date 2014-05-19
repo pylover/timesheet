@@ -10,16 +10,13 @@ config = create_config_manager()
 def entrypoint():
     global config
 
-    # Preparing cli arguments
-    from timesheet import cli
-    args = cli.parse_ars()
-
-    # Preparing config
-    config.load_files(args.config_files)
-
     # initializing models
     from timesheet import models
     models.init()
+
+    # Preparing cli arguments
+    from timesheet import cli
+    args = cli.parse_ars()
 
     # Switch on commands
     cli.dispatch_command(args)
