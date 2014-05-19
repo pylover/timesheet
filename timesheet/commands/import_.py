@@ -1,4 +1,3 @@
-from _ast import Import
 
 __author__ = 'vahid'
 

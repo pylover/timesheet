@@ -16,8 +16,11 @@ class StartCommand(Command):
         active_task = Task.get_active_task()
         if active_task:
             print 'You have an active task: %s' % active_task
-            print 'Please end this task before starting another one'
-            return
+            answer = raw_input("Do you want to terminate the currently active task ([y]/n)? ")
+            if not answer or answer.lower() == 'y':
+                active_task.end()
+            else:
+                return
 
         subject = Subject.ensure(self.args.subject)
         task = Task(title=self.args.task)

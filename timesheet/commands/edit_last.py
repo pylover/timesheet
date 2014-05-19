@@ -1,7 +1,7 @@
 __author__ = 'vahid'
 
 from timesheet.commands import Command
-from timesheet.models import Subject, Task, DBSession
+from timesheet.models import Task, DBSession
 
 
 class EditLastCommand(Command):
@@ -18,5 +18,3 @@ class EditLastCommand(Command):
             DBSession.commit()
         else:
             print 'Last task not found'
-
-

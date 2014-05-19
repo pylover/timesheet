@@ -1,7 +1,7 @@
 __author__ = 'vahid'
 
 from timesheet.commands import Command
-from timesheet.models import Subject, Task, DBSession
+from timesheet.models import Task, DBSession
 
 
 class EndCommand(Command):
@@ -17,5 +17,3 @@ class EndCommand(Command):
         active_task.end()
         DBSession.commit()
         print 'Task ended: %s' % active_task
-
-

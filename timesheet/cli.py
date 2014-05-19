@@ -2,9 +2,9 @@ __author__ = 'vahid'
 
 import argparse
 import argcomplete
-from argcomplete.completers import EnvironCompleter
 from timesheet.configuration import user_config_file
 from timesheet.commands import Command
+#from argcomplete.completers import EnvironCompleter
 
 commands = ''.join(['\n %-20s%s' % (c.name, c.description) for c in Command.get_available_commands()])
 

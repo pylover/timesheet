@@ -58,7 +58,6 @@ class Task(BaseModel):
         task = cls.query.order_by(cls.end_time.desc()).first()
         return task
 
-
     def end(self):
         self.end_time = datetime.now()
 

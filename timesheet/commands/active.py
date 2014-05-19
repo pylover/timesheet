@@ -1,7 +1,7 @@
 __author__ = 'vahid'
 
 from timesheet.commands import Command
-from timesheet.models import Subject, Task, DBSession
+from timesheet.models import Task
 
 
 class ActiveCommand(Command):
@@ -14,5 +14,3 @@ class ActiveCommand(Command):
             print 'Active task: %s' % active_task
         else:
             print "You don't have any active task"
-
-

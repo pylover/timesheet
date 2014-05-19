@@ -54,5 +54,6 @@ from .subjects import SubjectsCommand
 from .import_ import ImportCommand
 from .export import ExportCommand
 from .edit_last import EditLastCommand
+from .abort import AbortCommand
 
 __all__ = ['Command']
