@@ -8,8 +8,9 @@ class ReportCommand(Command):
     name = 'report'
     description = 'Print report about an subject or all subjects'
 
-    def add_arguments(self):
-        self.parser.add_argument('subject', nargs='?', help="Subject to do something about that.")
+    @classmethod
+    def add_arguments(cls):
+        cls.parser.add_argument('subject', nargs='?', help="Subject to do something about that.")
 
     @staticmethod
     def report_subject(subject):

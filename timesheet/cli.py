@@ -3,36 +3,45 @@ __author__ = 'vahid'
 import argparse
 import argcomplete
 from timesheet.configuration import user_config_file
-from timesheet.commands import Command
-#from argcomplete.completers import EnvironCompleter
+from timesheet.commands import get_available_commands
 
-commands = ''.join(['\n %-20s%s' % (c.name, c.description) for c in Command.get_available_commands()])
 
-parser = argparse.ArgumentParser(description='Simple timesheet system, using python',
-                                 epilog="Available commands:%s" % commands,
-                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+# commands_help_list = ''.join(['\n %-20s%s' % (c.name, c.description) for c in commands])
+# command_names = [c.name for c in commands]
 
-parser.add_argument('command', help='Command')
+def create_parser():
 
-parser.add_argument('-c', '--config-file',
-                    dest='config_files',
-                    action='append',
-                    default=[user_config_file],
-                    help='YAML configuration file, this option can be used multiple times \
-                    , default: %s' % user_config_file)
+    parser = argparse.ArgumentParser(description='Simple timesheet system, using python')
 
-argcomplete.autocomplete(parser)
+    parser.add_argument('-c', '--config-file',
+                        dest='config_files',
+                        action='append',
+                        default=[user_config_file],
+                        help='YAML configuration file, this option can be used multiple times \
+                        , default: %s' % user_config_file)
+
+    subparsers = parser.add_subparsers(title='subcommands',
+                                       description='valid subcommands')
+
+    for cmd in get_available_commands():
+        cmd.create_parser(subparsers)
+
+    argcomplete.autocomplete(parser)
+
+    return parser
+
 
 REMINDER = []
 
 
 def parse_ars():
+    parser = create_parser()
     global REMINDER
     args, REMINDER = parser.parse_known_args()
     return args
 
 
-def dispatch_command(command):
-    command_class = Command.get_command(command)
-    cmd = command_class(REMINDER)
+def dispatch_command(args):
+    command_class = args.command_class
+    cmd = command_class(args)
     cmd.do_job()

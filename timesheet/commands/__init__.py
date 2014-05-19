@@ -1,7 +1,5 @@
 __author__ = 'vahid'
 
-import argparse
-
 
 class Command(object):
     """
@@ -9,40 +7,46 @@ class Command(object):
     """
     name = ''
     description = ''
+    parser = None
 
-    def __init__(self, args=None):
-        self.parser = self._create_parser()
-        self.add_arguments()
-        self.args = self.parser.parse_args(args=args)
+    def __init__(self, args):
+        self.args = args
 
-    def _create_parser(self, **kwargs):
-        kwargs['description'] = self.description
-        kwargs['prog'] = '%s %s' % ('timesheet', self.name)
-        kwargs['add_help'] = False
-        return argparse.ArgumentParser(**kwargs)
+    @classmethod
+    def create_parser(cls, subparsers):
+        cls.parser = subparsers.add_parser(cls.name, help=cls.description)
+        cls.parser.set_defaults(command_class=cls)
+        cls.add_arguments()
+        return cls.parser
 
-    def add_arguments(self):
+    @classmethod
+    def add_arguments(cls):
         pass
 
-    def help(self):
-        self.parser.print_help()
+    @classmethod
+    def help(cls):
+        cls.parser.print_help()
 
     def do_job(self):
         raise NotImplementedError()
 
-    @classmethod
-    def get_available_commands(cls):
-        commands = cls.__subclasses__()
-        for c in list(commands):
-            commands.extend(c.get_available_commands())
-        return commands
 
-    @classmethod
-    def get_command(cls, command_name):
-        for c in cls.get_available_commands():
-            if c.name == command_name:
-                return c
-        raise ValueError('Invalid command name: %s' % command_name)
+def __get_available_commands(command_class):
+    commands = command_class.__subclasses__()
+    for c in list(commands):
+        commands.extend(__get_available_commands(c))
+    return commands
+
+
+def get_available_commands():
+    return __get_available_commands(Command)
+
+
+def get_command(command_name):
+    for c in get_available_commands():
+        if c.name == command_name:
+            return c
+    raise ValueError('Invalid command name: %s' % command_name)
 
 
 from .help import HelpCommand

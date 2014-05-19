@@ -10,10 +10,11 @@ class ExportCommand(Command):
     name = 'export'
     description = 'Export the database into csv file with columns: subject, task, start, end'
 
-    def add_arguments(self):
-        self.parser.add_argument('output', nargs='?', help="Output filename. if omitted, "
-                                                           "the standard output will be used")
-        self.parser.add_argument('-s', '--subject', action='append', default=[], help="Subject to filter the result, ")
+    @classmethod
+    def add_arguments(cls):
+        cls.parser.add_argument('output', nargs='?', help="Output filename. if omitted, \
+        the standard output will be used")
+        cls.parser.add_argument('-s', '--subject', action='append', default=[], help="Subject to filter the result, ")
 
     def do_job(self):
 

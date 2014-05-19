@@ -17,8 +17,9 @@ class ImportCommand(Command):
         super(ImportCommand, self).__init__(*args, **kw)
         self.subjects = {}
 
-    def add_arguments(self):
-        self.parser.add_argument('input', nargs='?', help="Input filename. if omitted, the standard input will be used")
+    @classmethod
+    def add_arguments(cls):
+        cls.parser.add_argument('input', nargs='?', help="Input filename. if omitted, the standard input will be used")
 
     def process_row(self, row):
         subject_name, task_name, start_time, end_time = row

@@ -22,6 +22,6 @@ def entrypoint():
     models.init()
 
     # Switch on commands
-    cli.dispatch_command(args.command)
+    cli.dispatch_command(args)
 
     sys.exit(0)
