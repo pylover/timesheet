@@ -5,7 +5,7 @@ __author__ = 'vahid'
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker, relationship, backref
 from sqlalchemy import create_engine, Column, DateTime, String, Integer, ForeignKey
-from datetime import datetime
+from datetime import datetime, timedelta
 from timesheet import config
 
 maker = sessionmaker()
@@ -66,11 +66,17 @@ class Task(BaseModel):
         self.end_time = datetime.now()
 
     @property
-    def hours(self):
+    def duration(self):
         if not self.end_time:
-            return 0
+            return timedelta()
         else:
-            return (self.end_time - self.start_time).total_seconds() / 3600.0
+            return self.end_time - self.start_time
+
+    @property
+    def duration_formatted(self):
+        total_seconds = self.duration.total_seconds()
+        hours, remainder = divmod(total_seconds, 3600)
+        return '%02d:%02d' % (hours, remainder / 60)
 
     def __repr__(self):
         return '<Subject=%s title=%s start=%s end=%s>' % (

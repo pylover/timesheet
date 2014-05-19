@@ -15,7 +15,8 @@ dependencies = [
     'sqlalchemy',
     'pymlconf>=0.3.10',
     'appdirs>=1.3.0',
-    'argcomplete'
+    'argcomplete',
+    'PrettyTable'
 ]
 
 
