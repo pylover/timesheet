@@ -59,7 +59,7 @@ class Task(BaseModel):
 
     @classmethod
     def get_last_task(cls):
-        task = cls.query.order_by(cls.end_time.desc()).first()
+        task = cls.query.order_by(cls.id.desc()).first()
         return task
 
     def end(self):

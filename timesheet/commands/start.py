@@ -4,6 +4,7 @@ __author__ = 'vahid'
 from timesheet.commands import Command
 from timesheet.models import Subject, Task, DBSession
 from timesheet.commands.completers import subject_completer
+import argparse
 
 
 class StartCommand(Command):
@@ -13,7 +14,7 @@ class StartCommand(Command):
     @classmethod
     def add_arguments(cls):
         cls.parser.add_argument('subject', help="Subject to do something about that.").completer = subject_completer
-        cls.parser.add_argument('task', nargs='?', help="The task name")
+        cls.parser.add_argument('task', nargs=argparse.REMAINDER, default=[], help="The task name")
 
     def do_job(self):
         active_task = Task.get_active_task()
@@ -26,7 +27,7 @@ class StartCommand(Command):
                 return
 
         subject = Subject.ensure(self.args.subject)
-        task = Task(title=self.args.task)
+        task = Task(title=' '.join(self.args.task))
         subject.tasks.append(task)
 
         DBSession.commit()
