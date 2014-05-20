@@ -14,7 +14,7 @@ class StartCommand(Command):
     @classmethod
     def add_arguments(cls):
         cls.parser.add_argument('subject', help="Subject to do something about that.").completer = subject_completer
-        cls.parser.add_argument('task', nargs=argparse.REMAINDER, default=[], help="The task name")
+        cls.parser.add_argument('task', nargs=argparse.REMAINDER, default=[], choices=[], help="The task name")
 
     def do_job(self):
         active_task = Task.get_active_task()
