@@ -79,11 +79,12 @@ class Task(BaseModel):
         return '%02d:%02d' % (hours, remainder / 60)
 
     def __repr__(self):
-        return '<Subject=%s title=%s start=%s end=%s>' % (
-            self.subject.title,
-            self.title,
-            self.start_time_string,
-            self.end_time_string
+        return '\n%-12s%s\n%-12s%s\n%-12s%s\n%-12s%s\n%-12s%s' % (
+            'Subject', self.subject.title,
+            'Title', self.title,
+            'Start', self.start_time_string,
+            'End', self.end_time_string,
+            'Duration', self.duration_formatted
         )
 
     @property
