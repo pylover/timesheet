@@ -1,5 +1,5 @@
 __author__ = 'vahid'
-__version__ = '0.3'
+__version__ = '0.4'
 
 
 import sys
