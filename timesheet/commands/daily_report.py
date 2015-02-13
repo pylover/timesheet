@@ -31,10 +31,11 @@ class DailyReportCommand(Command):
     session = DBSession()
     daywork = func.sum(func.julianday(Task.end_time) - func.julianday(Task.start_time)) * 86400
     day = func.date(Task.start_time)
-    query = session.query(day, daywork)
-    query = query.group_by(day)
-    query = query.filter(func.date(Task.start_time) > func.date('now', '-%s day' % self.args.days))
-    query = query.order_by(Task.start_time)
+    query = session.query(day, daywork)\
+      .group_by(day)\
+      .filter(func.date(Task.start_time) > func.date('now', '-%s day' % self.args.days))\
+      .filter(Task.end_time != None)\
+      .order_by(Task.start_time)
 
     print '\n'
 
