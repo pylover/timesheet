@@ -39,8 +39,8 @@ class DailyReportCommand(Command):
 
     print '\n'
 
-    table = PrettyTable(['Day', 'Work Time'])
-
+    table = PrettyTable(['Day', 'Work Time', 'Graph'])
+    table.align["Graph"] = "l"
     total_hours = timedelta(0)
     last_day = None
     for row in query:
@@ -48,11 +48,11 @@ class DailyReportCommand(Command):
       if last_day:
         diff = (day - last_day)
         for i in range(diff.days-1):
-          table.add_row([last_day + timedelta(i+1), 0 ])
+          table.add_row([last_day + timedelta(i+1), 0, '' ])
 
       worktime = timedelta(seconds=round(row[1]))
       total_hours += worktime
-      table.add_row([day, worktime])
+      table.add_row([day, worktime, '#' * int(round(((row[1] * 60 / 86400))))])
       last_day = day
 
     print table
