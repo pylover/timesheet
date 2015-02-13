@@ -57,12 +57,14 @@ from .help import HelpCommand
 from .start import StartCommand
 from .end import EndCommand
 from .active import ActiveCommand
-from .report import ReportCommand
+from .full_report import FullReportCommand
 from .subjects import SubjectsCommand
 from .import_ import ImportCommand
 from .export import ExportCommand
 from .edit_last import EditLastCommand
 from .abort import AbortCommand
 from .rename import RenameCommand
+from .daily_report import DailyReportCommand
+
 
 __all__ = ['Command']

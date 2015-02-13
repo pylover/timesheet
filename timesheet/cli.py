@@ -15,6 +15,6 @@ argcomplete.autocomplete(parser)
 
 
 def parse_ars():
-    #args, _reminder = parser.parse_known_args()
+    # args, _reminder = parser.parse_known_args()
     args = parser.parse_args()
     return args

@@ -13,9 +13,11 @@ db:
   echo: false
 
 datetime_format: %(time_format)s
+date_format: %(date_format)s
 
 """ % dict(data_file=user_data_file,
-           time_format='"%Y/%m/%d %H:%M"')
+           time_format='"%Y/%m/%d %H:%M"',
+           date_format='"%Y/%m/%d"')
 
 
 def create_config_manager():

@@ -7,7 +7,7 @@ from prettytable import PrettyTable
 from datetime import timedelta
 
 
-class ReportCommand(Command):
+class FullReportCommand(Command):
     name = 'report'
     description = 'Print report about an subject or all subjects'
 
