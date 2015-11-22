@@ -1,8 +1,8 @@
-__author__ = 'vahid'
-
+# -*- coding: utf-8 -*-
 from pymlconf import ConfigManager
 from os import path, mkdir
 from appdirs import user_data_dir, user_config_dir
+__author__ = 'vahid'
 
 user_data_file = path.abspath(path.join(user_data_dir(), 'timesheet', 'timesheet.sqlite'))
 user_config_file = path.abspath(path.join(user_config_dir(), 'timesheetrc'))
@@ -16,8 +16,8 @@ datetime_format: %(time_format)s
 date_format: %(date_format)s
 
 """ % dict(data_file=user_data_file,
-           time_format='"%Y/%m/%d %H:%M"',
-           date_format='"%Y/%m/%d"')
+           time_format='"%Y-%m-%d %H:%M"',
+           date_format='"%Y-%m-%d"')
 
 
 def create_config_manager():
