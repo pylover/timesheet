@@ -5,7 +5,8 @@ from timesheet.commands import get_available_commands
 __author__ = 'vahid'
 
 
-parser = argparse.ArgumentParser(description='Simple timesheet system, using python')
+parser = argparse.ArgumentParser(description='Simple timesheet system.')
+parser.add_argument('-c', '--config', dest='config_file', help='Config file.')
 subparsers = parser.add_subparsers(title='subcommands', description='valid subcommands')
 
 for cmd in get_available_commands():

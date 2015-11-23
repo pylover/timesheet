@@ -1,22 +1,22 @@
-__author__ = 'vahid'
-__version__ = '0.7.1'
-
+# -*- coding: utf-8 -*-
 import sys
-from timesheet.configuration import create_config_manager
-
-config = create_config_manager()
+from timesheet.configuration import init_config, config
+__author__ = 'vahid'
+__version__ = '0.8.1'
 
 
 def entrypoint():
     global config
 
-    # initializing models
-    from timesheet import models
-    models.init()
-
     # Preparing cli arguments
     from timesheet import cli
     args = cli.parse_ars()
+
+    config = init_config(args.config_file)
+
+    # initializing models
+    from timesheet import models
+    models.init()
 
     # Dispatch and execute the command
     args.command_class(args).do_job()
