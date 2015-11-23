@@ -78,7 +78,7 @@ class Task(BaseModel):
 
     def __repr__(self):
         return '\n%-12s%s\n%-12s%s\n%-12s%s\n%-12s%s\n%-12s%s' % (
-            'Subject', self.subject.title,
+            'Subject', "" if not self.subject else self.subject.title,
             'Title', self.title,
             'Start', self.start_time_string,
             'End', self.end_time_string,
