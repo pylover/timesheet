@@ -39,7 +39,10 @@ class FullReportCommand(Command):
                            task.end_time_string])
 
         print table
-        print 'Total hours: %.2f' % (total_duration.total_seconds() / 3600.0)
+        ts = total_duration.total_seconds()
+        h = ts / 3600
+        m = (ts % 3600) / 60
+        print 'Total: %.2d:%.2d' % (h, m)
         print
 
     def do_job(self):

@@ -65,6 +65,7 @@ from .edit_last import EditLastCommand
 from .abort import AbortCommand
 from .rename import RenameCommand
 from .daily_report import DailyReportCommand
+from .delete import DeleteCommand
 
 
 __all__ = ['Command']
