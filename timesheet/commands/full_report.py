@@ -1,10 +1,9 @@
-__author__ = 'vahid'
-
 from timesheet.commands import Command
-from timesheet.models import Subject
+from timesheet.models import Subject, Task
 from timesheet.commands.completers import subject_completer
 from prettytable import PrettyTable
-from datetime import timedelta
+from datetime import timedelta, date
+__author__ = 'vahid'
 
 
 class FullReportCommand(Command):
@@ -15,9 +14,9 @@ class FullReportCommand(Command):
     def add_arguments(cls):
         cls.parser.add_argument('subject', nargs='?', help="Subject to do something about that.")\
             .completer = subject_completer
+        cls.parser.add_argument('--today', action='store_true', help="Only prints today's tasks.")
 
-    @staticmethod
-    def report_subject(subject):
+    def report_subject(self, subject):
 
         print '\n'
         print '%s' % subject.title
@@ -27,8 +26,12 @@ class FullReportCommand(Command):
         table.align["Duration"] = "c"
         table.padding_width = 1  # default
 
+        q = Task.query.filter(Task.subject == subject)
+        if self.args.today:
+            q = q.filter(Task.start_time > date.today())
+
         total_duration = timedelta()
-        for task in subject.tasks:
+        for task in q:
             total_duration += task.duration
             table.add_row(['' if not task.title else task.title,
                            task.duration_formatted,
