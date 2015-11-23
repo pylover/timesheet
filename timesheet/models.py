@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
-__author__ = 'vahid'
-
-
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker, relationship, backref
 from sqlalchemy import create_engine, Column, DateTime, String, Integer, ForeignKey
 from datetime import datetime, timedelta
 from timesheet import config
+__author__ = 'vahid'
 
 maker = sessionmaker()
 DBSession = scoped_session(maker)

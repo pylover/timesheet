@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from timesheet.commands import Command
 from timesheet.models import Subject, Task
 from timesheet.commands.completers import subject_completer

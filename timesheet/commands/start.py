@@ -1,10 +1,9 @@
-
-__author__ = 'vahid'
-
+# -*- coding: utf-8 -*-
 from timesheet.commands import Command
 from timesheet.models import Subject, Task, DBSession
 from timesheet.commands.completers import subject_completer
 import argparse
+__author__ = 'vahid'
 
 
 class StartCommand(Command):

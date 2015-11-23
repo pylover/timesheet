@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 __author__ = 'vahid'
 
 
@@ -66,6 +67,6 @@ from .abort import AbortCommand
 from .rename import RenameCommand
 from .daily_report import DailyReportCommand
 from .delete import DeleteCommand
-
+from .version import VersionCommand
 
 __all__ = ['Command']

@@ -1,12 +1,11 @@
-
-__author__ = 'vahid'
-
+# -*- coding: utf-8 -*-
 import sys
 import csv
 from timesheet.commands import Command
 from timesheet import config
 from timesheet.models import Subject, DBSession, Task
 from datetime import datetime
+__author__ = 'vahid'
 
 
 class ImportCommand(Command):

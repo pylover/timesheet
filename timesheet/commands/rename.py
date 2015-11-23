@@ -1,9 +1,8 @@
-
-__author__ = 'vahid'
-
+# -*- coding: utf-8 -*-
 from timesheet.commands import Command
 from timesheet.models import Subject, DBSession
 from timesheet.commands.completers import subject_completer
+__author__ = 'vahid'
 
 
 class RenameCommand(Command):

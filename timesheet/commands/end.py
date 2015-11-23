@@ -1,7 +1,7 @@
-__author__ = 'vahid'
-
+# -*- coding: utf-8 -*-
 from timesheet.commands import Command
 from timesheet.models import Task, DBSession
+__author__ = 'vahid'
 
 
 class EndCommand(Command):

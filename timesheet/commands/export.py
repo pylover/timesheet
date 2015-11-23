@@ -1,10 +1,10 @@
-__author__ = 'vahid'
-
+# -*- coding: utf-8 -*-
 import sys
 import csv
 from timesheet.commands import Command
 from timesheet.models import Task, Subject
 from timesheet.commands.completers import subject_completer
+__author__ = 'vahid'
 
 
 class ExportCommand(Command):

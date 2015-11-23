@@ -1,7 +1,7 @@
-__author__ = 'vahid'
-
+# -*- coding: utf-8 -*-
 from timesheet.commands import Command, get_command, get_available_command_names
 from argcomplete.completers import ChoicesCompleter
+__author__ = 'vahid'
 
 
 class HelpCommand(Command):

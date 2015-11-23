@@ -1,8 +1,7 @@
-
-__author__ = 'vahid'
-
+# -*- coding: utf-8 -*-
 from timesheet.commands import Command
 from timesheet.models import Subject
+__author__ = 'vahid'
 
 
 class SubjectsCommand(Command):

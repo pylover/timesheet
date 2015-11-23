@@ -1,8 +1,8 @@
-__author__ = 'vahid'
-
+# -*- coding: utf-8 -*-
 import argparse
 import argcomplete
 from timesheet.commands import get_available_commands
+__author__ = 'vahid'
 
 
 parser = argparse.ArgumentParser(description='Simple timesheet system, using python')

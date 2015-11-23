@@ -1,8 +1,8 @@
-__author__ = 'vahid'
-
+# -*- coding: utf-8 -*-
 from timesheet.commands import Command
 from timesheet.models import Task, DBSession
 import argparse
+__author__ = 'vahid'
 
 
 class EditLastCommand(Command):
