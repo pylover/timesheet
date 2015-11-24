@@ -95,6 +95,12 @@ class Task(BaseModel):
 
 
 def init():
+
+    if DBSession.bind:
+        return
+    elif DBSession.registry.has():
+        DBSession.registry.clear()
+
     engine = create_engine(config.db.uri, echo=config.db.echo)
     DBSession.configure(bind=engine)
     BaseModel.metadata.create_all(engine)
