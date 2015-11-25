@@ -33,7 +33,7 @@ setup(
     description="Simple timesheet tracking system",
     packages=find_packages(exclude=['ez_setup']),
     platforms=["any"],
-    long_description=read('README.rst'),
+    long_description=read('README.md'),
     install_requires=dependencies,
     dependency_links=[
         'git+https://github.com/pylover/elixir.git#egg=elixir-0.8.1'

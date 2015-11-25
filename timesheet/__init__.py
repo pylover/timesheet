@@ -2,7 +2,7 @@
 import sys
 from timesheet.configuration import init_config, config
 __author__ = 'vahid'
-__version__ = '0.8.2'
+__version__ = '0.8.3'
 
 
 def entrypoint():
