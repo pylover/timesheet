@@ -15,8 +15,7 @@ class DailyReportCommand(Command):
 
     @classmethod
     def add_arguments(cls):
-        cls.parser.add_argument('days', nargs='?', default=30, type=int, help="Days, integer, default: 30") \
-            .completer = subject_completer
+        cls.parser.add_argument('days', nargs='?', default=30, type=int, help="Days, integer, default: 30")
 
     def do_job(self):
         """

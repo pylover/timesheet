@@ -66,6 +66,7 @@ from .edit_last import EditLastCommand
 from .abort import AbortCommand
 from .rename import RenameCommand
 from .daily_report import DailyReportCommand
+from .daily_detail import DailyDetailCommand
 from .delete import DeleteCommand
 from .version import VersionCommand
 
