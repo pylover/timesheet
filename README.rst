@@ -71,6 +71,8 @@ Bash Auto-Completion
 Change Log
 ^^^^^^^^^^
 
+* 0.9.2
+    * Supporting python3
 
 * 0.8.4
     * Adding daily-report command by `sonologic <https://github.com/sonologic>`_
