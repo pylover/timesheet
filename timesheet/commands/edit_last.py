@@ -19,4 +19,4 @@ class EditLastCommand(Command):
             task.title = ' '.join(self.args.task)
             DBSession.commit()
         else:
-            print 'Last task not found'
+            print('Last task not found')

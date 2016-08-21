@@ -9,4 +9,4 @@ class SubjectsCommand(Command):
     description = 'Print all subjects'
 
     def do_job(self):
-        print '\n'.join(Subject.all_titles())
+        print('\n'.join(Subject.all_titles()))

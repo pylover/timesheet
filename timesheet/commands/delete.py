@@ -17,9 +17,9 @@ class DeleteCommand(Command):
     def do_job(self):
         subject = Subject.query.filter(Subject.title == self.args.subject).first()
         if not subject:
-            print 'Subject can not found: %s' % self.args.subject
+            print('Subject can not found: %s' % self.args.subject)
         else:
             DBSession.delete(subject)
             DBSession.commit()
 
-        print "Subject `%s` was deleted successfully" % self.args.subject
+        print("Subject `%s` was deleted successfully" % self.args.subject)

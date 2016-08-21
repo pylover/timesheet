@@ -38,7 +38,7 @@ class DailyDetailCommand(Command):
             .filter(func.date(Task.start_time) > func.date('now', '-%s day' % self.args.days)) \
             .order_by(Task.start_time)
 
-        print '\n'
+        print()
 
         table = PrettyTable(['Start', 'End', 'Time', 'Subject', 'Title'])
         table.align["Title"] = "l"
@@ -74,6 +74,5 @@ class DailyDetailCommand(Command):
                 '', '', timedelta(seconds=round(day_total)), '', ''
             ])
 
-        print table
-        print 'Total Work time: %s' % timedelta(seconds=total_time)
-        print
+        print(table)
+        print('Total Work time: %s\n' % timedelta(seconds=total_time))

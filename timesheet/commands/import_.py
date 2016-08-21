@@ -25,13 +25,13 @@ class ImportCommand(Command):
         start_time = datetime.strptime(start_time, config.datetime_format)
         end_time = datetime.strptime(end_time, config.datetime_format)
 
-        if not subject_name in self.subjects:
+        if subject_name not in self.subjects:
             self.subjects[subject_name] = Subject.ensure(subject_name)
             DBSession.commit()
 
         task = Task(title=task_name, start_time=start_time, end_time=end_time)
         self.subjects[subject_name].tasks.append(task)
-        print 'Adding %s' % task
+        print('Adding %s' % task)
         DBSession.commit()
 
     def do_job(self):

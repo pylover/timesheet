@@ -6,7 +6,7 @@ __author__ = 'vahid'
 
 
 parser = argparse.ArgumentParser(description='Simple timesheet system.')
-subparsers = parser.add_subparsers(title='subcommands', description='valid subcommands')
+subparsers = parser.add_subparsers(title='Commands', description='')
 
 for cmd in get_available_commands():
     cmd.create_parser(subparsers)

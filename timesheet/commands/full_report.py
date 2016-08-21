@@ -19,8 +19,7 @@ class FullReportCommand(Command):
 
     def report_subject(self, subject):
 
-        print '\n'
-        print '%s' % subject.title
+        print('\n%s' % subject.title)
 
         table = PrettyTable(['Task Name', 'Duration', 'From', 'To'])
         table.align["Task Name"] = "l"
@@ -39,18 +38,17 @@ class FullReportCommand(Command):
                            task.start_time_string,
                            task.end_time_string])
 
-        print table
+        print(table)
         ts = total_duration.total_seconds()
         h = ts / 3600
         m = (ts % 3600) / 60
-        print 'Total: %.2d:%.2d' % (h, m)
-        print
+        print('Total: %.2d:%.2d\n' % (h, m))
 
     def do_job(self):
         if self.args.subject:
             subject = Subject.query.filter(Subject.title == self.args.subject).first()
             if not subject:
-                print 'Subject can not found: %s' % self.args.subject
+                print('Subject can not found: %s' % self.args.subject)
             else:
                 self.report_subject(subject)
         else:

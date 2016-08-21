@@ -11,8 +11,8 @@ class AbortCommand(Command):
     def do_job(self):
         active_task = Task.get_active_task()
         if active_task:
-            print 'Aborting active task: %s' % active_task
+            print('Aborting active task: %s' % active_task)
             DBSession.delete(active_task)
             DBSession.commit()
         else:
-            print "You don't have any active task"
+            print("You don't have any active task")

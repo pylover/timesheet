@@ -11,9 +11,9 @@ class EndCommand(Command):
     def do_job(self):
         active_task = Task.get_active_task()
         if not active_task:
-            print "You don't have any active task"
+            print("You don't have any active task")
             return
 
         active_task.end()
         DBSession.commit()
-        print 'Task ended: %s' % active_task
+        print('Task ended: %s' % active_task)

@@ -34,7 +34,7 @@ class DailyReportCommand(Command):
             .filter(Task.end_time != None) \
             .order_by(Task.start_time)
 
-        print '\n'
+        print()
 
         table = PrettyTable(['Day', 'Work Time', 'Graph'])
         table.align["Graph"] = "l"
@@ -52,6 +52,5 @@ class DailyReportCommand(Command):
             table.add_row([day, worktime, '#' * int(round((row[1] * 60 / 86400)))])
             last_day = day
 
-        print table
-        print 'Total Work time: %s' % total_hours
-        print
+        print(table)
+        print('Total Work time: %s\n' % total_hours)

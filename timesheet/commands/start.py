@@ -19,7 +19,7 @@ class StartCommand(Command):
     def do_job(self):
         active_task = Task.get_active_task()
         if active_task:
-            print 'You have an active task: %s' % active_task
+            print('You have an active task: %s' % active_task)
             answer = raw_input("Do you want to terminate the currently active task ([y]/n)? ")
             if not answer or answer.lower() == 'y':
                 active_task.end()
@@ -31,6 +31,4 @@ class StartCommand(Command):
         subject.tasks.append(task)
 
         DBSession.commit()
-        print 'Started task: %s' % task
-
-
+        print('Started task: %s' % task)

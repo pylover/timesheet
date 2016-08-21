@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 import sys
 from timesheet.configuration import init_config, config
 __author__ = 'vahid'
-__version__ = '0.8.3'
+__version__ = '0.8.4'
 
 
 def entrypoint():
-    global config
 
     # initializing configuration
     init_config()

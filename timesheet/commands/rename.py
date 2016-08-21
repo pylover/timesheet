@@ -16,16 +16,16 @@ class RenameCommand(Command):
 
     def do_job(self):
         if not self.args.subject:
-            print "Please specify a subject to rename"
+            print("Please specify a subject to rename")
 
         subject = Subject.query.filter(Subject.title == self.args.subject).first()
         if not subject:
-            print 'Subject can not found: %s' % self.args.subject
+            print('Subject can not found: %s' % self.args.subject)
             return
 
         new_subject = Subject.query.filter(Subject.title == self.args.new_name).first()
         if new_subject:
-            print "There is already a subject with name: %s" % self.args.new_name
+            print("There is already a subject with name: %s" % self.args.new_name)
             answer = raw_input("Do you want to merge these subjects? [Y/n]: ")
             if not answer or answer.lower() == 'y':
                 for task in subject.tasks:
@@ -34,10 +34,8 @@ class RenameCommand(Command):
                 DBSession.delete(subject)
                 DBSession.commit()
             else:
-                print 'Operation aborted by user.'
+                print('Operation aborted by user.')
 
         else:
             subject.title = self.args.new_name
             DBSession.commit()
-
-

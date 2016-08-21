@@ -11,6 +11,6 @@ class ActiveCommand(Command):
     def do_job(self):
         active_task = Task.get_active_task()
         if active_task:
-            print 'Active task: %s' % active_task
+            print('Active task: %s' % active_task)
         else:
-            print "You don't have any active task"
+            print("You don't have any active task")

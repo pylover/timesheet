@@ -9,4 +9,4 @@ class VersionCommand(Command):
     description = 'Prints the version'
 
     def do_job(self):
-        print timesheet.__version__
+        print(timesheet.__version__)
