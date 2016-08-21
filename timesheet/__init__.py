@@ -3,7 +3,7 @@ from __future__ import print_function
 import sys
 from timesheet.configuration import init_config, config
 __author__ = 'vahid'
-__version__ = '0.9.0'
+__version__ = '0.9.1'
 
 
 def entrypoint():

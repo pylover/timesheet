@@ -11,6 +11,8 @@ install
 usage
 ^^^^^
 
+::
+
     $ timesheet help
     usage: timesheet [-h]
                      {help,start,end,active,report,subjects,import,export,edit-last,abort,rename,daily-report,daily-detail,delete,version}
@@ -45,6 +47,8 @@ usage
 Help on Help
 ^^^^^^^^^^^^
 
+::
+
     $ timesheet help -h
     usage: timesheet help [-h] [command]
 
@@ -57,6 +61,8 @@ Help on Help
 
 Bash Auto-Completion
 ^^^^^^^^^^^^^^^^^^^^
+
+::
 
     $ echo "eval \"\$(register-python-argcomplete timesheet)\"" >> ~/.bashrc
     $ source ~/.bashrc
