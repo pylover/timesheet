@@ -30,6 +30,8 @@ class FullReportCommand(Command):
         if self.args.today:
             q = q.filter(Task.start_time > date.today())
 
+        q = q.order_by(Task.start_time)
+
         total_duration = timedelta()
         for task in q:
             total_duration += task.duration
