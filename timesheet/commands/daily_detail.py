@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from timesheet.commands import Command
 from timesheet.models import DBSession, Task, Subject
-from timesheet.commands.completers import subject_completer
 from prettytable import PrettyTable
 from datetime import timedelta, datetime
 from sqlalchemy import func
@@ -34,7 +33,7 @@ class DailyDetailCommand(Command):
                               time_worked,
                               Subject.title,
                               Task.title) \
-            .filter(Subject.id==Task.subject_id) \
+            .filter(Subject.id == Task.subject_id) \
             .filter(func.date(Task.start_time) > func.date('now', '-%s day' % self.args.days)) \
             .order_by(Task.start_time)
 

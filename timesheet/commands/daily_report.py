@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from timesheet.commands import Command
 from timesheet.models import DBSession, Task
-from timesheet.commands.completers import subject_completer
 from prettytable import PrettyTable
 from datetime import timedelta, datetime
 from sqlalchemy import func

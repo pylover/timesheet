@@ -93,6 +93,10 @@ class Task(BaseModel):
     def end_time_string(self):
         return '' if not self.end_time else self.end_time.strftime(config.datetime_format)
 
+    @classmethod
+    def all_titles(cls):
+        return [s.title for s in cls.query.order_by(cls.title)]
+
 
 def init():
 
