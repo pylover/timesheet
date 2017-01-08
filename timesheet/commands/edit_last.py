@@ -26,7 +26,7 @@ class EditLastCommand(Command):
         task = Task.get_last_task()
         if task:
             if self.args.title:
-                task.title = ' '.join(self.args.title)
+                task.title = self.args.title
 
             if self.args.end_time:
                 task.end_time = self.parse_datetime(self.args.end_time)

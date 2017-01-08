@@ -20,6 +20,7 @@ def entrypoint():
     args = cli.parse_ars()
 
     # Dispatch and execute the command
-    args.command_class(args).do_job()
+    if hasattr(args, 'command_class'):
+        args.command_class(args).do_job()
 
     sys.exit(0)
