@@ -65,10 +65,7 @@ class Task(BaseModel):
 
     @property
     def duration(self):
-        if not self.end_time:
-            return timedelta()
-        else:
-            return self.end_time - self.start_time
+        return (self.end_time if self.end_time else datetime.now()) - self.start_time
 
     @property
     def duration_formatted(self):
