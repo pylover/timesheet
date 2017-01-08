@@ -18,11 +18,10 @@ class FullReportCommand(Command):
         cls.parser.add_argument('subject', nargs='?', help="Subject to do something about that.")\
             .completer = subject_completer
         cls.parser.add_argument('--today', action='store_true', help="Only prints today's tasks.")
-        cls.parser.add_argument('--from', dest='from_', metavar="FROM", help='example: 2016.12.21')
-        cls.parser.add_argument('--to', help='example: 2016.12.21')
-        cls.parser.add_argument('--time-format', default=config.datetime_format,
-                                help="Date time format to parse --from/--to values, default: " +
-                                     config.datetime_format.replace('%', '%%'))
+        cls.parser.add_argument('--from', dest='from_', metavar="FROM", help='example: 2016-12-21')
+        cls.parser.add_argument('--to', help='example: 2016-12-21')
+        cls.parser.add_argument('--time-format', default='%Y-%m-%d',
+                                help="Date time format to parse --from/--to values, default: %%Y-%%m-%%d")
 
     def report_subject(self, subject):
 
