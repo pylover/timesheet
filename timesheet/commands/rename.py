@@ -26,7 +26,7 @@ class RenameCommand(Command):
         new_subject = Subject.query.filter(Subject.title == self.args.new_name).first()
         if new_subject:
             print("There is already a subject with name: %s" % self.args.new_name)
-            answer = raw_input("Do you want to merge these subjects? [Y/n]: ")
+            answer = input("Do you want to merge these subjects? [Y/n]: ")
             if not answer or answer.lower() == 'y':
                 for task in subject.tasks:
                     task.subject = new_subject
