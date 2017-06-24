@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from pymlconf import ConfigManager
+from pymlconf import ConfigManager, IGNORE
 from os import path, mkdir
 from appdirs import user_data_dir, user_config_dir
 
@@ -36,7 +36,9 @@ def init_config(config_file=None):
         context=dict(
             data_dir=data_dir,
             time_format='"%Y-%m-%d %H:%M"',
-            date_format='"%Y-%m-%d"')
+            date_format='"%Y-%m-%d"'
+        ),
+        missing_file_behavior=IGNORE
     )
 
 
