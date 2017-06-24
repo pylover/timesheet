@@ -44,6 +44,22 @@ usage
         delete              Deletes a subject
         version             Prints the version
 
+start
+^^^^^
+
+::
+
+    $ ts start -h
+    usage: ts start [-h] subject ...
+
+    positional arguments:
+      subject     Subject to do something about that.
+      task        Task title.
+
+    optional arguments:
+      -h, --help  show this help message and exit
+
+
 Help on Help
 ^^^^^^^^^^^^
 
